@@ -1,0 +1,22 @@
+' ==================================================================================================
+' Purpose of this code is to invoke the User Form when user double click the line on the spreadsheet
+' ==================================================================================================
+
+Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
+
+' Define variables needed
+Dim iRow As Integer
+' Initialize variables
+iRow = Target.Row
+
+' Update Inputs in the form
+UpdateInputs iRow
+
+' Cancel = false means form can not be modified together with cell
+Cancel = True
+
+'possible to modify cell when the form is up
+MyCarCheckListForm.Show False
+
+End Sub
+
