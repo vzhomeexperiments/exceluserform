@@ -9,5 +9,13 @@ Sub StartUF()
 ' specify True if we can not modify Workbook while UserForm is open
 ' specify False if we can modify Workbook while UserForm is open
 MyCarCheckListFormR.Show False
+
+' protect worksheet from writing (can be still unprotected
+Worksheets("Report").Protect , UserInterfaceOnly:=True
+' this will also protect with password
+' Worksheets("Report").Protect "Password", UserInterfaceOnly:=True
+
    
 End Sub
+
+
