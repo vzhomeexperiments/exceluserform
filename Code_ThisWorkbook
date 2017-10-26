@@ -1,0 +1,13 @@
+Option Explicit
+
+'========================================
+'Launch the userform
+'========================================
+' This program is written to allow UserForm launch from a button
+Sub StartUF()
+
+' specify True if we can not modify Workbook while UserForm is open
+' specify False if we can modify Workbook while UserForm is open
+MyCarCheckListFormR.Show False
+   
+End Sub
