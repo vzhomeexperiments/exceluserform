@@ -297,7 +297,7 @@ Sub Push2SharePoint()
     ' define variables
     Dim SharePointPath As Variant
     Dim FileAsNamed As Variant
-    ' retrieve SharePoint path indicated by the user inside Excel Sheet named "Select" on cell B33
+    ' retrieve SharePoint path indicated by the user inside Excel Sheet named "Select" on cell B9
     SharePointPath = ThisWorkbook.Sheets("Summary").Range("B9").Text
     ' provide some error message if it's not populated
     On Error GoTo NoStorageSelected
@@ -322,7 +322,7 @@ Exit Sub
 ' Error Management
 NoStorageSelected:
            MsgBox "Error: Excel can not reach SharePoint Folder Storage location" & vbCrLf & _
-           "Possible reasons are: Storage location was not defined in the Worksheet 'Select' cell B33 or " & vbCrLf & _
+           "Possible reasons are: Storage location was not defined in the Worksheet 'Select' cell B9 or " & vbCrLf & _
            "Not having sufficient previledges to access SharePoint location " & vbCrLf & _
            "Make sure to add forward slash after SharePoint Document Library"
            Exit Sub
