@@ -288,5 +288,46 @@ PPTPres.Application.ActivePresentation.ApplyTemplate "C:\Users\fxtrams\Downloads
                
 End Sub
 
+'========================================
+'SAVE THIS FILE TO A SHAREPOINT
+'========================================
+
+Sub Push2SharePoint()
+
+    ' define variables
+    Dim SharePointPath As Variant
+    Dim FileAsNamed As Variant
+    ' retrieve SharePoint path indicated by the user inside Excel Sheet named "Select" on cell B33
+    SharePointPath = ThisWorkbook.Sheets("Summary").Range("B9").Text
+    ' provide some error message if it's not populated
+    On Error GoTo NoStorageSelected
+    If Not SharePointPath <> False Then
+        'Displaying a message if file not choosedn in the above step
+        MsgBox "No storage space was selected.", vbExclamation, "Sorry!"
+        'And existing from the procedure
+        Exit Sub
+    Else
+        'Create the new file name, note we place data format in ISO 8601 format in front of the file name
+        FileAsNamed = SharePointPath & Year(Date) & "-" & Month(Date) & "-" & Day(Date) & "_" & ThisWorkbook.Name
+
+        ' save the document in the current location
+        ThisWorkbook.Save
+        ' push the document to the Archive location
+        ThisWorkbook.SaveAs Filename:=FileAsNamed, FileFormat:=xlOpenXMLWorkbookMacroEnabled, CreateBackup:=False
+
+
+    End If
+
+Exit Sub
+' Error Management
+NoStorageSelected:
+           MsgBox "Error: Excel can not reach SharePoint Folder Storage location" & vbCrLf & _
+           "Possible reasons are: Storage location was not defined in the Worksheet 'Select' cell B33 or " & vbCrLf & _
+           "Not having sufficient previledges to access SharePoint location " & vbCrLf & _
+           "Make sure to add forward slash after SharePoint Document Library"
+           Exit Sub
+
+End Sub
+
 
 
