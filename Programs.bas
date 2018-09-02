@@ -331,3 +331,63 @@ End Sub
 
 
 
+'========================================
+'SEND EMAILS TO THE USERS
+'========================================
+
+Sub Send_Email()
+
+' define variables
+Dim OutApp As Object
+Dim OutMail As Object
+Dim wshS As Worksheet: Set wshS = Worksheets("Summary")
+Set OutApp = CreateObject("Outlook.Application")
+Set OutMail = OutApp.CreateItem(0)
+Dim question As VbMsgBoxResult
+Dim EmailTo As Range: Dim EmailCc As Range
+Dim cline As Range: Dim tline As Range
+Dim sTo As String: Dim cTo As String
+
+' setup question for the message box
+question = MsgBox("Sending email to all contacts, Are you sure? [Preview will follow]", vbYesNo + vbQuestion)
+' retrieve emails from the worksheet
+Set EmailTo = wshS.Range("B10:B11")
+Set EmailCc = wshS.Range("B12:B14")
+' joining string for email 'To'
+For Each cline In EmailTo
+        sTo = sTo & ";" & cline.Value
+Next
+' joining string for email 'Cc'
+For Each tline In EmailCc
+        cTo = cTo & ";" & tline.Value
+Next
+' cleaning of the strings
+sTo = Mid(sTo, 2)
+cTo = Mid(cTo, 2)
+
+If question = vbYes Then
+    
+    With OutMail
+        .To = sTo
+        .CC = cTo
+        .BCC = ""
+        .Subject = "CarStatusReport" & wshS.Range("B2").Text & "-" & wshS.Range("B3").Text
+        .Body = "Dear participants, thank you for productive work." & _
+                vbNewLine & "Please find the file attached: " & ThisWorkbook.Name & _
+                vbNewLine & "Best regards"
+        .Attachments.Add ThisWorkbook.Path & "\" & ThisWorkbook.Name 'add this file as attachment
+        .Display 'with preview mode
+        '.Send   'sending email directly
+    End With
+    
+    Set OutMail = Nothing
+    Set OutApp = Nothing
+    
+ElseIf question = vbNo Then
+
+    Exit Sub
+    
+End If
+
+End Sub
+
