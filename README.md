@@ -19,6 +19,6 @@ Created versatile template allowing not only data collection but also many other
 
 ## Learn more:
 Support this initiative by joining this course!!!
-https://www.udemy.com/save-your-time-with-excel-userform/?couponCode=SAVE-YOUR-TIME-10
+https://www.udemy.com/course/save-your-time-with-excel-userform/?referralCode=0E6A73E1EE79CB01A2E2
 
 Save your time, let computer do the job!
