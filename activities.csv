@@ -1,0 +1,7 @@
+id,activity,category,start,end
+1,Clean house,preparations,2020-07-01 00:00:00,2020-07-03 00:00:00
+2,Pack bags,preparations,2020-07-05 10:00:00,2020-07-05 17:00:00
+3,Run to train,travel,2020-07-05 17:00:00,2020-07-05 17:15:00
+4,Sleep on train,travel,2020-07-05 17:15:00,2020-07-06 08:00:00
+5,Procrastinate,procrastination,2020-07-01 00:00:00,2020-07-05 00:00:00
+6,Sleep,vacation,2020-07-06 08:00:00,2020-07-09 00:00:00
